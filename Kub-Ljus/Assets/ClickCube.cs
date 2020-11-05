@@ -35,6 +35,8 @@ public class ClickCube : MonoBehaviour
     {
         Cube,
         RotatedCube,
+        Circle,
+        Triangle,
     }
 
     //variabel som berättar vilken form objektet har, 
@@ -133,8 +135,5 @@ public class ClickCube : MonoBehaviour
         
     }
 
-    private void Update()
-    {
-        print(lightStrength);
-    }
+    
 }
