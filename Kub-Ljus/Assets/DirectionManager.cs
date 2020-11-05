@@ -6,4 +6,7 @@ public class DirectionManager : MonoBehaviour
 {
     //lista av håll som kuber ska raycasta
     public List<Vector3> cubeDirList;
+
+    //låst av håll som roterade kuber ska raycasta
+    public List<Vector3> rotatedCubeDirList;
 }
