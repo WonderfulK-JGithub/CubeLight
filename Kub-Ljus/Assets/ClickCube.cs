@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ClickCube : MonoBehaviour
 {
+
+    public Coroutine coroutine;
+
     //light referense
     Light cubeLight;
     
@@ -16,6 +19,9 @@ public class ClickCube : MonoBehaviour
     //variabel för att sätta ljus
     float lightStrength;
 
+    //variabel för om ljus ska gå ner eller inte
+    bool lightDecrease;
+
     //variabel för hur snabbt ljuset ändras
     public float lightSpeed;
 
@@ -25,8 +31,6 @@ public class ClickCube : MonoBehaviour
 
 
     //Enum för olika former
-
-    
     public enum Form
     {
         Cube,
@@ -62,8 +66,12 @@ public class ClickCube : MonoBehaviour
         //--gammalt--//ger "enabled" på ljuset motsatt värde, så om ljuset är av sätts det på och om det är på sätts det av
         //cubeLight.enabled = !cubeLight.enabled;
 
-        //Startar Coroutinen som ändrar ljuset
-        StartCoroutine(LightUp());
+
+        if (coroutine != null) StopCoroutine(coroutine);
+
+        //Startar Coroutinen som ändrar ljuset. Sparar Coroutine i en variabel
+        coroutine = StartCoroutine(LightUp());
+
 
         //foreach loop som går igenom varje håll som kuben ska skicka raykasts åt
         foreach (var direction in cubeDirList)
@@ -80,16 +88,23 @@ public class ClickCube : MonoBehaviour
                 //--gammalt--//Får kubens light.enabled motsatt värde, exakt som tidigare
                 //scriptReferense.cubeLight.enabled = !scriptReferense.cubeLight.enabled;
 
-                //Startar Coroutinen som ändrar ljuset
-                scriptReferense.StartCoroutine(scriptReferense.LightUp());
+               
+
+                if (scriptReferense.coroutine != null) scriptReferense.StopCoroutine(scriptReferense.coroutine);
+
+                //Startar Coroutinen som ändrar ljuset. Sparar Coroutine i en variabel
+                scriptReferense.coroutine = scriptReferense.StartCoroutine(scriptReferense.LightUp());
             }
         }
+
+       
     }
 
     public IEnumerator LightUp()
     {
-        print("hej");
-        if (lightStrength == 0)
+        lightDecrease = !lightDecrease;
+
+        if (!lightDecrease)
         {
             while (lightStrength < 1)
             {
@@ -115,7 +130,7 @@ public class ClickCube : MonoBehaviour
                 yield return null;
             }
         }
-       
+        
     }
 
     private void Update()
