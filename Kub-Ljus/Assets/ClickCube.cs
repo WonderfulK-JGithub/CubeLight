@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ClickCube : MonoBehaviour
 {
-
+    //Coroutine variabel till för att spara en coroutine och sedan kolla om den är aktiv när man tänker starta en ny
     public Coroutine coroutine;
 
     //light referense
@@ -44,6 +44,7 @@ public class ClickCube : MonoBehaviour
 
     void Start()
     {
+        //Hämtar rätt lista baserad på vilken form man har gett den med "form" variabeln
         switch(form)
         {
             case Form.Cube:
@@ -77,7 +78,7 @@ public class ClickCube : MonoBehaviour
         //--gammalt--//ger "enabled" på ljuset motsatt värde, så om ljuset är av sätts det på och om det är på sätts det av
         //cubeLight.enabled = !cubeLight.enabled;
 
-
+        //Ser till att 2 av samma coroutine inte körs samtidigt
         if (coroutine != null) StopCoroutine(coroutine);
 
         //Startar Coroutinen som ändrar ljuset. Sparar Coroutine i en variabel
@@ -100,7 +101,7 @@ public class ClickCube : MonoBehaviour
                 //scriptReferense.cubeLight.enabled = !scriptReferense.cubeLight.enabled;
 
                
-
+                //Ser till att 2 av samma coroutine inte körs samtidigt
                 if (scriptReferense.coroutine != null) scriptReferense.StopCoroutine(scriptReferense.coroutine);
 
                 //Startar Coroutinen som ändrar ljuset. Sparar Coroutine i en variabel
@@ -108,21 +109,26 @@ public class ClickCube : MonoBehaviour
             }
         }
 
-       
+        
     }
 
     public IEnumerator LightUp()
     {
+        //ger "lightDecrease" motsatt värde, så den slocknar om den lyser och lyser upp om den inte lyser.
         lightDecrease = !lightDecrease;
 
         if (!lightDecrease)
         {
+            //ser till att coroutinen inte tar slut innan ljus styrkan är 100%
             while (lightStrength < 1)
             {
+                //lägger till ljusstyrka
                 lightStrength += lightSpeed;
 
+                //ser till att ljusstyrkan inte råkar gå över 1
                 if (lightStrength > 1) lightStrength = 1;
 
+                //sätter ljusstyrkan på kubens ljus, samma värde som varaibeln som ökats
                 cubeLight.intensity = lightStrength;
 
                 yield return null;
@@ -130,14 +136,19 @@ public class ClickCube : MonoBehaviour
         }
         else
         {
+            //ser till att coroutinen inte tar slut innan ljus styrkan är 0%
             while (lightStrength > 0)
             {
+                //tar bort ljusstyrka
                 lightStrength -= lightSpeed;
 
+                //ser till att ljusstyrkan inte kan råka gå under 0
                 if (lightStrength < 0) lightStrength = 0;
 
+                //sätter ljusstyrkan på kubens ljus, samma värde som varaibeln som minskat
                 cubeLight.intensity = lightStrength;
 
+                //temporärt pausar coroutinen i 1 frame
                 yield return null;
             }
         }
