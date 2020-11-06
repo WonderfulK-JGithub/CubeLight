@@ -44,9 +44,18 @@ public class ClickCube : MonoBehaviour
 
     void Start()
     {
+        switch(form)
+        {
+            case Form.Cube:
+                //hämtar listan
+                cubeDirList = FindObjectOfType<DirectionManager>().cubeDirList;
+                break;
+            case Form.RotatedCube:
+                //hämtar listan
+                cubeDirList = FindObjectOfType<DirectionManager>().rotatedCubeDirList;
+                break;
+        }
         
-        //hämtar listan
-        cubeDirList = FindObjectOfType<DirectionManager>().cubeDirList;
 
         //skapar light och lägger referense i varaibel
         //Anledningen är för att jag vill kunna ändra ljusen som de ger ut utan att behöva gå egenom varenda kubs ljus

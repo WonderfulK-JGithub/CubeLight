@@ -108,4 +108,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightObject: {fileID: 0}
   glowAtStart: 0
+  lightSpeed: 0.01
   form: 0
