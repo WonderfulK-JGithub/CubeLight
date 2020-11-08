@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ClickCube : MonoBehaviour
 {
+    //referense till levelManagern
+    LevelManager levelManager;
+
     //Coroutine variabel till för att spara en coroutine och sedan kolla om den är aktiv när man tänker starta en ny
     public Coroutine coroutine;
 
@@ -20,7 +23,7 @@ public class ClickCube : MonoBehaviour
     float lightStrength;
 
     //variabel för om ljus ska gå ner eller inte
-    bool lightDecrease;
+    bool lightDecrease = true;
 
     //variabel för hur snabbt ljuset ändras
     public float lightSpeed;
@@ -70,50 +73,87 @@ public class ClickCube : MonoBehaviour
         else lightStrength = 0;
 
         cubeLight.intensity = lightStrength;
+
+        //hämtar levelManager referense
+        levelManager = FindObjectOfType<LevelManager>();
+
     }
 
     //void som sker när man klickar på kuben
     private void OnMouseDown()
     {
-        //--gammalt--//ger "enabled" på ljuset motsatt värde, så om ljuset är av sätts det på och om det är på sätts det av
-        //cubeLight.enabled = !cubeLight.enabled;
-
-        //Ser till att 2 av samma coroutine inte körs samtidigt
-        if (coroutine != null) StopCoroutine(coroutine);
-
-        //Startar Coroutinen som ändrar ljuset. Sparar Coroutine i en variabel
-        coroutine = StartCoroutine(LightUp());
-
-
-        //foreach loop som går igenom varje håll som kuben ska skicka raykasts åt
-        foreach (var direction in cubeDirList)
+        if(levelManager.clickAllow)
         {
-            //variabel som sparar raycast träff
-            RaycastHit hit;
+            //--gammalt--//ger "enabled" på ljuset motsatt värde, så om ljuset är av sätts det på och om det är på sätts det av
+            //cubeLight.enabled = !cubeLight.enabled;
 
-            //Raycast åt ett av hållen i listan, om den träffar en annan kub sker koden nedanför
-            if (Physics.Raycast(transform.position, direction, out hit))
+            //Ser till att 2 av samma coroutine inte körs samtidigt
+            if (coroutine != null) StopCoroutine(coroutine);
+
+            //Startar Coroutinen som ändrar ljuset. Sparar Coroutine i en variabel
+            coroutine = StartCoroutine(LightUp());
+
+
+            //foreach loop som går igenom varje håll som kuben ska skicka raykasts åt
+            foreach (var direction in cubeDirList)
             {
-                //skaffar referense för scriptet på kuben
-                ClickCube scriptReferense = hit.collider.GetComponent<ClickCube>();
+                //variabel som sparar raycast träff
+                RaycastHit hit;
 
-                //--gammalt--//Får kubens light.enabled motsatt värde, exakt som tidigare
-                //scriptReferense.cubeLight.enabled = !scriptReferense.cubeLight.enabled;
+                //Raycast åt ett av hållen i listan, om den träffar en annan kub sker koden nedanför
+                if (Physics.Raycast(transform.position, direction, out hit))
+                {
+                    //skaffar referense för scriptet på kuben
+                    ClickCube scriptReferense = hit.collider.GetComponent<ClickCube>();
+
+                    //--gammalt--//Får kubens light.enabled motsatt värde, exakt som tidigare
+                    //scriptReferense.cubeLight.enabled = !scriptReferense.cubeLight.enabled;
+
+
+                    //Ser till att 2 av samma coroutine inte körs samtidigt
+                    if (scriptReferense.coroutine != null) scriptReferense.StopCoroutine(scriptReferense.coroutine);
+
+                    //Startar Coroutinen som ändrar ljuset. Sparar Coroutine i en variabel
+                    scriptReferense.coroutine = scriptReferense.StartCoroutine(scriptReferense.LightUp());
+                }
+            }
+
+
+
+            //skapar variabel som ska kolla om alla ljus är på
+            bool checkLight = true;
+
+            //foreach loop som går igenom alla kuber
+            foreach (var item in FindObjectsOfType<ClickCube>())
+            {
+                //kollar om lightdecrease är true, om det stämmer är inte alla ljus tända och checkLight sätts till false
+                if (item.lightDecrease) checkLight = false;
+            }
+
+            if (checkLight)
+            {
+
+                //Sätter leveln till completed
+                FindObjectOfType<LevelComplete>().SetLevelComplete();
+
+                //Startar Victory screenens animation, med en 2s delay
+                FindObjectOfType<LevelComplete>().Invoke("StartTransition",2f);
+
+                //Gör att man inte längre kan klicka på kuberna
+                levelManager.clickAllow = false;
 
                
-                //Ser till att 2 av samma coroutine inte körs samtidigt
-                if (scriptReferense.coroutine != null) scriptReferense.StopCoroutine(scriptReferense.coroutine);
 
-                //Startar Coroutinen som ändrar ljuset. Sparar Coroutine i en variabel
-                scriptReferense.coroutine = scriptReferense.StartCoroutine(scriptReferense.LightUp());
             }
+
         }
 
-        
+
     }
 
     public IEnumerator LightUp()
     {
+        
         //ger "lightDecrease" motsatt värde, så den slocknar om den lyser och lyser upp om den inte lyser.
         lightDecrease = !lightDecrease;
 
@@ -131,6 +171,7 @@ public class ClickCube : MonoBehaviour
                 //sätter ljusstyrkan på kubens ljus, samma värde som varaibeln som ökats
                 cubeLight.intensity = lightStrength;
 
+                //temporärt pausar coroutinen i 1 frame
                 yield return null;
             }
         }
