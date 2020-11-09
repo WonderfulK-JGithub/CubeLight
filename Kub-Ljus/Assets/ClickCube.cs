@@ -23,7 +23,7 @@ public class ClickCube : MonoBehaviour
     float lightStrength;
 
     //variabel för om ljus ska gå ner eller inte
-    bool lightDecrease = true;
+    bool lightDecrease;
 
     //variabel för hur snabbt ljuset ändras
     public float lightSpeed;
@@ -77,6 +77,7 @@ public class ClickCube : MonoBehaviour
         //hämtar levelManager referense
         levelManager = FindObjectOfType<LevelManager>();
 
+        lightDecrease = !glowAtStart;
     }
 
     //void som sker när man klickar på kuben

@@ -34,8 +34,10 @@ public class ButtonLevel : MonoBehaviour
     {
         if(isUnlocked)
         {
-            //laddar rätt scene
-            SceneManager.LoadScene(sceneIndex);
+            //Hittar transition objektet och ber den att ladda rätt scene
+
+            FadeTransition transition_objekt = FindObjectOfType<FadeTransition>();
+            transition_objekt.StartCoroutine(transition_objekt.SlowSceneChange(sceneIndex));
         }
     }
 

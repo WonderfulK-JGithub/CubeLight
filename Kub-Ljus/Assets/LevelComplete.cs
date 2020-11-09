@@ -22,14 +22,18 @@ public class LevelComplete : MonoBehaviour
     //accessas av knapp
     public void NextLevel()
     {
-        //laddar nästa scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //Hittar transition objektet och ber den att ladda nästa scene
+        
+        FadeTransition transition_objekt = FindObjectOfType<FadeTransition>();
+        transition_objekt.StartCoroutine(transition_objekt.SlowSceneChange(SceneManager.GetActiveScene().buildIndex + 1));
     }
     //accessas av knapp
     public void MainMenu()
     {
-        //laddar första scenen (title screenen)
-        SceneManager.LoadScene(0);
+        //Hittar transition objektet och ber den att ladda första scenen (title screenen)
+
+        FadeTransition transition_objekt = FindObjectOfType<FadeTransition>();
+        transition_objekt.StartCoroutine(transition_objekt.SlowSceneChange(0));
     }
 
     //callas när alla ljus är tända
