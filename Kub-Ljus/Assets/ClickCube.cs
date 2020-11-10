@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class ClickCube : MonoBehaviour
 {
+    
+
+    //referense till objektets renderer
+    Renderer rend;
+
+    
+
     //referense till levelManagern
     LevelManager levelManager;
 
@@ -77,7 +84,13 @@ public class ClickCube : MonoBehaviour
         //hämtar levelManager referense
         levelManager = FindObjectOfType<LevelManager>();
 
+        //Ger lightDecrease rätt startvärde, så att den ökar första gången man trycker på kuben om kuben inte lyser
         lightDecrease = !glowAtStart;
+
+        //hämtar renderen
+        rend = GetComponent<Renderer>();
+
+        
     }
 
     //void som sker när man klickar på kuben
@@ -102,7 +115,7 @@ public class ClickCube : MonoBehaviour
                 RaycastHit hit;
 
                 //Raycast åt ett av hållen i listan, om den träffar en annan kub sker koden nedanför
-                if (Physics.Raycast(transform.position, direction, out hit))
+                if (Physics.Raycast(transform.position, direction, out hit,2f))
                 {
                     //skaffar referense för scriptet på kuben
                     ClickCube scriptReferense = hit.collider.GetComponent<ClickCube>();
@@ -153,10 +166,11 @@ public class ClickCube : MonoBehaviour
     }
 
     public IEnumerator LightUp()
-    {
-        
+    { 
         //ger "lightDecrease" motsatt värde, så den slocknar om den lyser och lyser upp om den inte lyser.
         lightDecrease = !lightDecrease;
+
+        
 
         if (!lightDecrease)
         {
@@ -194,7 +208,9 @@ public class ClickCube : MonoBehaviour
                 yield return null;
             }
         }
+
         
+
     }
 
     

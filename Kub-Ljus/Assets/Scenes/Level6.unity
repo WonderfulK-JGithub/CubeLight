@@ -629,6 +629,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RotatedCube
       objectReference: {fileID: 0}
+    - target: {fileID: 1569272660030742804, guid: 5cacdc7801ab7c04ba4aaeb8966b0939,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8c08745c864378f4f81def43d49e5737, type: 2}
     - target: {fileID: 1569272660030742806, guid: 5cacdc7801ab7c04ba4aaeb8966b0939,
         type: 3}
       propertyPath: lightObject

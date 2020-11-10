@@ -106,6 +106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6df8ec7b936414d967b40eeefc1b78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetMat: {fileID: 2100000, guid: 6531d2d30d2fa3f499fc83cc6f8d0b5e, type: 2}
+  haveShader: 1
   lightObject: {fileID: 0}
   glowAtStart: 0
   lightSpeed: 0.01
