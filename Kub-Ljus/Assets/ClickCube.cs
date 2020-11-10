@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class ClickCube : MonoBehaviour
 {
-    
 
-    //referense till objektets renderer
-    Renderer rend;
+    //Prefab till lightTrail
+    public GameObject trailPrefab;
 
     
 
@@ -86,11 +85,6 @@ public class ClickCube : MonoBehaviour
 
         //Ger lightDecrease rätt startvärde, så att den ökar första gången man trycker på kuben om kuben inte lyser
         lightDecrease = !glowAtStart;
-
-        //hämtar renderen
-        rend = GetComponent<Renderer>();
-
-        
     }
 
     //void som sker när man klickar på kuben
@@ -129,6 +123,11 @@ public class ClickCube : MonoBehaviour
 
                     //Startar Coroutinen som ändrar ljuset. Sparar Coroutine i en variabel
                     scriptReferense.coroutine = scriptReferense.StartCoroutine(scriptReferense.LightUp());
+
+                    GameObject newTrail = Instantiate(trailPrefab, transform.position, Quaternion.identity);
+
+                    TrailBehavior scriptRef = newTrail.GetComponent<TrailBehavior>();
+                    scriptRef.dir = direction;
                 }
             }
 
@@ -170,7 +169,8 @@ public class ClickCube : MonoBehaviour
         //ger "lightDecrease" motsatt värde, så den slocknar om den lyser och lyser upp om den inte lyser.
         lightDecrease = !lightDecrease;
 
-        
+        //Väntar en liten stund på att trailsen ska ha nuddat kuberna(vet inte exakt men jag uppskattar med tiden)
+        yield return new WaitForSeconds(20f / 60f);
 
         if (!lightDecrease)
         {
