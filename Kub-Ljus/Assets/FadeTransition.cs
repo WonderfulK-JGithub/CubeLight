@@ -30,4 +30,9 @@ public class FadeTransition : MonoBehaviour
         SceneManager.LoadScene(sceneIndex);
 
     }
+
+    public void Delete()
+    {
+        SaveSystem.Delete();
+    }
 }

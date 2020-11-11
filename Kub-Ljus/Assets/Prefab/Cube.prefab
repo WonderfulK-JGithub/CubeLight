@@ -106,7 +106,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6df8ec7b936414d967b40eeefc1b78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightObject: {fileID: 0}
+  trailPrefab: {fileID: 3810997076192382836, guid: 6745ac99c90e39c49a8bca7ee262093d,
+    type: 3}
+  lightObject: {fileID: 2363849738452656556, guid: d24db07eb2ddf434baed34fdcf0f0f4e,
+    type: 3}
   glowAtStart: 0
   lightSpeed: 0.01
   form: 0

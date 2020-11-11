@@ -9,6 +9,13 @@ public class TrailBehavior : MonoBehaviour
 
     public Vector3 dir;
 
+    public bool dontDestroy = false;
+
+    private void Start()
+    {
+        if (!dontDestroy)Invoke("dinMamma", 2);
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -17,5 +24,10 @@ public class TrailBehavior : MonoBehaviour
             transform.position += spd * dir;
             distTraveled += spd;
         }
+        
+    }
+    void dinMamma()
+    {
+        Destroy(gameObject);
     }
 }

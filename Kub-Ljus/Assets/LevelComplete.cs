@@ -13,12 +13,6 @@ public class LevelComplete : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    
-    void Update()
-    {
-        
-    }
-
     //accessas av knapp
     public void NextLevel()
     {

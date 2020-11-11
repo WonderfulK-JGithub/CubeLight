@@ -109,7 +109,7 @@ public class ClickCube : MonoBehaviour
                 RaycastHit hit;
 
                 //Raycast åt ett av hållen i listan, om den träffar en annan kub sker koden nedanför
-                if (Physics.Raycast(transform.position, direction, out hit,2f))
+                if (Physics.Raycast(transform.position, direction, out hit,2.9f))
                 {
                     //skaffar referense för scriptet på kuben
                     ClickCube scriptReferense = hit.collider.GetComponent<ClickCube>();
@@ -124,10 +124,16 @@ public class ClickCube : MonoBehaviour
                     //Startar Coroutinen som ändrar ljuset. Sparar Coroutine i en variabel
                     scriptReferense.coroutine = scriptReferense.StartCoroutine(scriptReferense.LightUp());
 
+                    //skapar en ny trail och sparar objektet i en variabel
                     GameObject newTrail = Instantiate(trailPrefab, transform.position, Quaternion.identity);
 
+                    //skapar en script referense med hjälp av variabeln
                     TrailBehavior scriptRef = newTrail.GetComponent<TrailBehavior>();
+
+                    //Ger trailen samma håll som raycasten
                     scriptRef.dir = direction;
+
+                    
                 }
             }
 
@@ -170,7 +176,7 @@ public class ClickCube : MonoBehaviour
         lightDecrease = !lightDecrease;
 
         //Väntar en liten stund på att trailsen ska ha nuddat kuberna(vet inte exakt men jag uppskattar med tiden)
-        yield return new WaitForSeconds(20f / 60f);
+        yield return new WaitForSeconds(10f / 60f);
 
         if (!lightDecrease)
         {

@@ -141,5 +141,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25392eb17bea49644a4420408454ed2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spd: 0.1
+  spd: 0.2
   dir: {x: 1, y: 0, z: 0}
