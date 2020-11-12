@@ -64,6 +64,10 @@ public class ClickCube : MonoBehaviour
                 //hämtar listan
                 cubeDirList = FindObjectOfType<DirectionManager>().rotatedCubeDirList;
                 break;
+            case Form.Circle:
+                //hämtar listan
+                cubeDirList = FindObjectOfType<DirectionManager>().circleDirList;
+                break;
         }
         
 
@@ -133,6 +137,8 @@ public class ClickCube : MonoBehaviour
                     //Ger trailen samma håll som raycasten
                     scriptRef.dir = direction;
 
+                 
+
                     
                 }
             }
@@ -161,7 +167,8 @@ public class ClickCube : MonoBehaviour
                 //Gör att man inte längre kan klicka på kuberna
                 levelManager.clickAllow = false;
 
-               
+                //tar bort refresh knappen
+                Destroy(FindObjectOfType<RefreshButton>().gameObject);
 
             }
 

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 789747753607734878}
   - component: {fileID: 789747753607734877}
   - component: {fileID: 789747753607734876}
+  - component: {fileID: 4221410859595570948}
   m_Layer: 5
   m_Name: RefreshButton
   m_TagString: Untagged
@@ -119,8 +120,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4669995546443345413, guid: ed8d18c648bb1f84e8bf0ec2a650a4b9,
-          type: 3}
+      - m_Target: {fileID: 4221410859595570948}
         m_MethodName: Refresh
         m_Mode: 1
         m_Arguments:
@@ -131,6 +131,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4221410859595570948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789747753607734874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 335b75d0c42ebb04ba95e8cc873aaaa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &789747754080993896
 GameObject:
   m_ObjectHideFlags: 0

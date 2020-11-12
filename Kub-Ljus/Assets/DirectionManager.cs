@@ -9,4 +9,6 @@ public class DirectionManager : MonoBehaviour
 
     //låst av håll som roterade kuber ska raycasta
     public List<Vector3> rotatedCubeDirList;
+
+    public List<Vector3> circleDirList;
 }
