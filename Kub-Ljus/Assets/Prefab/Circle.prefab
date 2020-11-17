@@ -107,6 +107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6df8ec7b936414d967b40eeefc1b78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultMat: {fileID: 2100000, guid: 8c08745c864378f4f81def43d49e5737, type: 2}
+  litMat: {fileID: 2100000, guid: dd003567a2df32f4b9939ba7bd925c92, type: 2}
   trailPrefab: {fileID: 3810997076192382836, guid: 6745ac99c90e39c49a8bca7ee262093d,
     type: 3}
   lightObject: {fileID: 2363849738452656556, guid: d24db07eb2ddf434baed34fdcf0f0f4e,

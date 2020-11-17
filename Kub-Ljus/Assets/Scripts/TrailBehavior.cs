@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class TrailBehavior : MonoBehaviour
 {
+    //variabel som kollar hur långt objektet åkt
     float distTraveled = 0;
+
+    //variabel för hur snabbt den åker
     public float spd;
 
+    //variabel för åt vilket holl den åker
     public Vector3 dir;
 
     public bool dontDestroy = false;

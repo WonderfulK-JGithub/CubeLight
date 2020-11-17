@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class ClickCube : MonoBehaviour
 {
+    //Två olika materials som kuberna ska skifta mellan beroende på om kuben lyser eller inte
+    public Material defaultMat;
+    public Material litMat;
+
+    //referense till renderer
+    Renderer rend;
+    
 
     //Prefab till lightTrail
     public GameObject trailPrefab;
-
-    
 
     //referense till levelManagern
     LevelManager levelManager;
@@ -53,6 +58,8 @@ public class ClickCube : MonoBehaviour
 
     void Start()
     {
+        rend = GetComponent<Renderer>();
+
         //Hämtar rätt lista baserad på vilken form man har gett den med "form" variabeln
         switch(form)
         {
@@ -79,8 +86,20 @@ public class ClickCube : MonoBehaviour
         //--gammalt--//Ger enabled rätt värde beroende på om man vill att kuben ska lysa på start eller inte
         //cubeLight.enabled = glowAtStart;
 
-        if (glowAtStart) lightStrength = 1;
-        else lightStrength = 0;
+        if (glowAtStart)
+        {
+            lightStrength = 1;
+
+            //ger kuben rätt material
+            rend.material = litMat;
+        }
+        else
+        {
+            lightStrength = 0;
+
+            //ger kuben rätt material
+            rend.material = defaultMat;
+        }
 
         cubeLight.intensity = lightStrength;
 
@@ -89,6 +108,7 @@ public class ClickCube : MonoBehaviour
 
         //Ger lightDecrease rätt startvärde, så att den ökar första gången man trycker på kuben om kuben inte lyser
         lightDecrease = !glowAtStart;
+        
     }
 
     //void som sker när man klickar på kuben
@@ -187,6 +207,9 @@ public class ClickCube : MonoBehaviour
 
         if (!lightDecrease)
         {
+            //ger kuben rätt material
+            rend.material = litMat;
+
             //ser till att coroutinen inte tar slut innan ljus styrkan är 100%
             while (lightStrength < 1)
             {
@@ -205,6 +228,9 @@ public class ClickCube : MonoBehaviour
         }
         else
         {
+            //ger kuben rätt material
+            rend.material = defaultMat;
+
             //ser till att coroutinen inte tar slut innan ljus styrkan är 0%
             while (lightStrength > 0)
             {
@@ -220,6 +246,8 @@ public class ClickCube : MonoBehaviour
                 //temporärt pausar coroutinen i 1 frame
                 yield return null;
             }
+
+           
         }
 
         
