@@ -18,6 +18,8 @@ public class ClickCube : MonoBehaviour
     //referense till levelManagern
     LevelManager levelManager;
 
+    AudioManager audioManager;
+
     //Coroutine variabel till för att spara en coroutine och sedan kolla om den är aktiv när man tänker starta en ny
     public Coroutine coroutine;
 
@@ -106,6 +108,9 @@ public class ClickCube : MonoBehaviour
         //hämtar levelManager referense
         levelManager = FindObjectOfType<LevelManager>();
 
+        //hämtar audioManagern
+        audioManager = FindObjectOfType<AudioManager>();
+
         //Ger lightDecrease rätt startvärde, så att den ökar första gången man trycker på kuben om kuben inte lyser
         lightDecrease = !glowAtStart;
         
@@ -116,6 +121,11 @@ public class ClickCube : MonoBehaviour
     {
         if(levelManager.clickAllow)
         {
+            audioManager.manager.PlayOneShot(audioManager.clip1);
+
+            //lägger till 1 på variabel som mäter hur många gånger man klickar
+            levelManager.amountOfClicks++;
+
             //--gammalt--//ger "enabled" på ljuset motsatt värde, så om ljuset är av sätts det på och om det är på sätts det av
             //cubeLight.enabled = !cubeLight.enabled;
 
@@ -207,12 +217,14 @@ public class ClickCube : MonoBehaviour
 
         if (!lightDecrease)
         {
+           
             //ger kuben rätt material
             rend.material = litMat;
 
             //ser till att coroutinen inte tar slut innan ljus styrkan är 100%
             while (lightStrength < 1)
             {
+                
                 //lägger till ljusstyrka
                 lightStrength += lightSpeed;
 

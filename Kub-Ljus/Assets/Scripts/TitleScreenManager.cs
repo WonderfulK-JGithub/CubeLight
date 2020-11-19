@@ -19,14 +19,7 @@ public class TitleScreenManager : MonoBehaviour
         //Om den inte gör det görs det en ny bool aray som får alla värden till false
         if (data == null)
         {
-            bool[] hej = new bool[31];
-            for (int i = 0; i < hej.Length; i++)
-            {
-                hej[i] = false;
-            }
-
-
-            data = new SaveData(hej);
+            data = new SaveData(new bool[31], new int[31]);
         }
 
         //skapar en variabel som refererar till bool arrayen i SaveDatan

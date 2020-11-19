@@ -143,3 +143,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spd: 0.2
   dir: {x: 1, y: 0, z: 0}
+  dontDestroy: 0

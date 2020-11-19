@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelComplete : MonoBehaviour
 {
     //referense till objektets animator
     Animator animator;
+
+    //referenser till text som visar hur många gånger man klickat
+    public Text clickText;
+    public Text bestClicks;
+
     void Start()
     {
         //skaffa referensen
@@ -47,20 +53,31 @@ public class LevelComplete : MonoBehaviour
         //Om den inte gör det görs det en ny bool aray som får alla värden till false
         if (data == null)
         {
-            bool[] hej = new bool[31];
-            for (int i = 0; i < hej.Length; i++)
-            {
-                hej[i] = false;
-            }
-
-            
-            data = new SaveData(hej);
+            data = new SaveData(new bool[31],new int[31]);
         }
+
+        //ger ett index för nuvarande scen
+        int index = SceneManager.GetActiveScene().buildIndex;
+
         //gör rätt index i bool arayen inom SaveDatan till true, (true säger att banan är avklarad)
-        data.levelData[SceneManager.GetActiveScene().buildIndex] = true;
+        data.levelData[index] = true;
+
+        //hämtar antal klicks från levelmanagern
+        int clickCount = FindObjectOfType<LevelManager>().amountOfClicks;
+
+        //kollar om antal klicks nytt rekord, eller om rekordet inte har suttits och ligger på 0
+        if(data.clickData[index] > clickCount || data.clickData[index] == 0)
+        {
+            data.clickData[index] = clickCount;
+        }
+
+        //Ger rätt text som ska visa hur mycket man har klickat
+        clickText.text += clickCount.ToString();
+        bestClicks.text += data.clickData[index];
+
 
         //Sparar den nya SaveDatan på en fil
-        SaveSystem.SaveLevels(data.levelData);
+        SaveSystem.SaveLevels(data.levelData,data.clickData);
         
 
         

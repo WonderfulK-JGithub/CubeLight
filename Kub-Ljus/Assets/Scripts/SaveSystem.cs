@@ -7,7 +7,7 @@ public static class SaveSystem
 {
     //void som sparar level data (en bool array) i en fil som är binär
     //Jag vet att jag inte i detta fall behöver spara datan i en binär fil, men jag hade sparat brackeys tutorial sen innan och årkade inte hitta ett annat sätt
-    public static void SaveLevels(bool[] array)
+    public static void SaveLevels(bool[] array, int[] clicks)
     {
         //öh vet inte riktigt vad formatter ska betyda, men om jag skulle gissa så är "formattern" en sorts blueprint för streamen som säger åt den att spara i binärt
         BinaryFormatter formatter = new BinaryFormatter();
@@ -22,7 +22,7 @@ public static class SaveSystem
         FileStream stream = new FileStream(path, FileMode.Create);
 
         //skapar en ny SaveData variabel
-        SaveData data = new SaveData(array);
+        SaveData data = new SaveData(array,clicks);
 
        
         //Skapar filen

@@ -77,7 +77,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Amount of clicks:'
+  m_Text: 'Amount of clicks: '
 --- !u!1 &4263741593643509611
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,7 +155,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ???
+  m_Text: 'Your best: '
 --- !u!1 &6547662477479613580
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,6 +440,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a81bdc7b8b7b6894083ba84c1ba2ee70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickText: {fileID: 6775863679845587902}
+  bestClicks: {fileID: 1650191476410484909}
 --- !u!1 &6547662478954649565
 GameObject:
   m_ObjectHideFlags: 0
