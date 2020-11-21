@@ -5,6 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 //en static class så alla object kan nå den
 public static class SaveSystem
 {
+    
     //void som sparar level data (en bool array) i en fil som är binär
     //Jag vet att jag inte i detta fall behöver spara datan i en binär fil, men jag hade sparat brackeys tutorial sen innan och årkade inte hitta ett annat sätt
     public static void SaveLevels(bool[] array, int[] clicks)

@@ -13,6 +13,8 @@ public class SaveData
     //int array som innehåller information om vad det lägsta antalet clicks man har klarat banan med
     public int[] clickData;
 
+    
+
     public SaveData (bool[] array, int[] clicks)
     {
         levelData = array;

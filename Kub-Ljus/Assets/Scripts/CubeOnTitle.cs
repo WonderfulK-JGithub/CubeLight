@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class CubeOnTitle : MonoBehaviour
 {
-    //animator referense
-    public Animator animator;
+   
 
 
     //samma som kuberna i banorna, fast färre saker
@@ -39,7 +38,7 @@ public class CubeOnTitle : MonoBehaviour
         lightDecrease = !lightDecrease;
         if (!lightDecrease)
         {
-            animator.Play("Title_End");
+            
             while (lightStrength < 5)
             {               
                 lightStrength += lightSpeed;
@@ -53,7 +52,7 @@ public class CubeOnTitle : MonoBehaviour
         }
         else
         {
-            animator.Play("Title_Start");
+            
             while (lightStrength > 0)
             {
               
