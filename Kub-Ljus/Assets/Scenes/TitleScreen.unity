@@ -301,7 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c916a48ed17f06542b2cbc0b840274cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  text: {fileID: 361177455}
   cubeLight: {fileID: 2124412096}
   lightSpeed: 0.05
 --- !u!1001 &13514392
@@ -1313,7 +1313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.6640022, b: 0, a: 0.50980395}
+  m_Color: {r: 1, g: 0.6640022, b: 0, a: 0.14509805}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:

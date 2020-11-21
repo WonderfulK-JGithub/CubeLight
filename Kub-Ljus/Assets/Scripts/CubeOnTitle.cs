@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CubeOnTitle : MonoBehaviour
 {
-   
-
+    //referense till titel texten
+    public Text text;
 
     //samma som kuberna i banorna, fast färre saker
     
@@ -46,7 +47,10 @@ public class CubeOnTitle : MonoBehaviour
                 if (lightStrength > 5) lightStrength = 5;
                
                 cubeLight.intensity = lightStrength;
-               
+
+                //ändrar alpha färg grej
+                text.color = new Color(text.color.r, text.color.g, text.color.b, 0.3f + (lightStrength / 5) * 1);
+
                 yield return null;
             }
         }
@@ -61,6 +65,8 @@ public class CubeOnTitle : MonoBehaviour
                 if (lightStrength < 0) lightStrength = 0;
 
                 cubeLight.intensity = lightStrength;
+
+                text.color = new Color(text.color.r, text.color.g, text.color.b, 0.3f + (lightStrength / 5) * 1);
 
                 yield return null;
             }

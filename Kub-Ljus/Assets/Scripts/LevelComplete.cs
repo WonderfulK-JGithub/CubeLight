@@ -53,7 +53,9 @@ public class LevelComplete : MonoBehaviour
         //Om den inte gör det görs det en ny bool aray som får alla värden till false
         if (data == null)
         {
+           
             data = new SaveData(new bool[31],new int[31]);
+
         }
 
         //ger ett index för nuvarande scen
@@ -64,6 +66,8 @@ public class LevelComplete : MonoBehaviour
 
         //hämtar antal klicks från levelmanagern
         int clickCount = FindObjectOfType<LevelManager>().amountOfClicks;
+
+        
 
         //kollar om antal klicks nytt rekord, eller om rekordet inte har suttits och ligger på 0
         if(data.clickData[index] > clickCount || data.clickData[index] == 0)
