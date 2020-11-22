@@ -111,6 +111,8 @@ MonoBehaviour:
   litMat: {fileID: 2100000, guid: dd003567a2df32f4b9939ba7bd925c92, type: 2}
   trailPrefab: {fileID: 3810997076192382836, guid: 6745ac99c90e39c49a8bca7ee262093d,
     type: 3}
+  partRing: {fileID: 2590020342035076117, guid: ef4e978e6c9bae84eab7a254bd24bcd0,
+    type: 3}
   lightObject: {fileID: 2363849738452656556, guid: d24db07eb2ddf434baed34fdcf0f0f4e,
     type: 3}
   glowAtStart: 0

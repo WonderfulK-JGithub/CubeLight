@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ClickCube : MonoBehaviour
 {
     //Två olika materials som kuberna ska skifta mellan beroende på om kuben lyser eller inte
@@ -14,6 +15,12 @@ public class ClickCube : MonoBehaviour
 
     //Prefab till lightTrail
     public GameObject trailPrefab;
+
+    //prefab till particles
+    public GameObject partRing;
+
+    //refernse till particle system
+    public ParticleSystem particles;
 
     //referense till levelManagern
     LevelManager levelManager;
@@ -60,7 +67,14 @@ public class ClickCube : MonoBehaviour
 
     void Start()
     {
+        //hämtar renderer referense
         rend = GetComponent<Renderer>();
+
+        //skapar particle objekt
+        GameObject particleThing = Instantiate(partRing, transform.position + Vector3.up, Quaternion.Euler(0,90,0));
+
+        //hämtar particle referense
+        particles = particleThing.GetComponent<ParticleSystem>();
 
         //Hämtar rätt lista baserad på vilken form man har gett den med "form" variabeln
         switch(form)
@@ -211,6 +225,9 @@ public class ClickCube : MonoBehaviour
     { 
         //ger "lightDecrease" motsatt värde, så den slocknar om den lyser och lyser upp om den inte lyser.
         lightDecrease = !lightDecrease;
+
+        //sätter igång particle system
+        //particles.Play();
 
         //Väntar en liten stund på att trailsen ska ha nuddat kuberna(vet inte exakt men jag uppskattar med tiden)
         yield return new WaitForSeconds(10f / 60f);

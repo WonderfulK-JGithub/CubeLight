@@ -45,7 +45,12 @@ public class LevelComplete : MonoBehaviour
 
     public void SetLevelComplete()
     {
-        
+        foreach (var cube in FindObjectsOfType<ClickCube>())
+        {
+            cube.particles.Play();
+        }
+
+
         //hämtar leveldata i en ny SaveData variabel
         SaveData data = SaveSystem.LoadLevelData();
 
