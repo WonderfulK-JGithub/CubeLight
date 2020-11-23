@@ -47,6 +47,9 @@ public class TitleScreenManager : MonoBehaviour
     {
         //spelar animationen som gör att levelSelect kommer fram
         animator.Play("LevelSelect_Rise");
+
+        //Gör att man inte kan trycka på kuben under titeln
+        FindObjectOfType<CubeOnTitle>().clickable = false;
     }
 
     public void ExitGame()

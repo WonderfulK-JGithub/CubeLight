@@ -12,7 +12,7 @@ public class CubeOnTitle : MonoBehaviour
     
     public Light cubeLight;
 
-   
+    public bool clickable = true;
 
     float lightStrength;
 
@@ -29,8 +29,12 @@ public class CubeOnTitle : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (coroutine != null) StopCoroutine(coroutine);
-        coroutine = StartCoroutine(LightUp());
+        if(clickable)
+        {
+            if (coroutine != null) StopCoroutine(coroutine);
+            coroutine = StartCoroutine(LightUp());
+        }
+       
     }
 
     public IEnumerator LightUp()
