@@ -26,6 +26,11 @@ public class LevelComplete : MonoBehaviour
         
         FadeTransition transition_objekt = FindObjectOfType<FadeTransition>();
         transition_objekt.StartCoroutine(transition_objekt.SlowSceneChange(SceneManager.GetActiveScene().buildIndex + 1));
+
+
+        //spelar en ljudeffect
+        AudioManager aManager = FindObjectOfType<AudioManager>();
+        aManager.manager.PlayOneShot(aManager.clip1);
     }
     //accessas av knapp
     public void MainMenu()
@@ -34,6 +39,11 @@ public class LevelComplete : MonoBehaviour
 
         FadeTransition transition_objekt = FindObjectOfType<FadeTransition>();
         transition_objekt.StartCoroutine(transition_objekt.SlowSceneChange(0));
+
+
+        //spelar en ljudeffect
+        AudioManager aManager = FindObjectOfType<AudioManager>();
+        aManager.manager.PlayOneShot(aManager.clip1);
     }
 
     //callas när alla ljus är tända
