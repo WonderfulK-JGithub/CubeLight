@@ -38,6 +38,10 @@ public class ButtonLevel : MonoBehaviour
 
             FadeTransition transition_objekt = FindObjectOfType<FadeTransition>();
             transition_objekt.StartCoroutine(transition_objekt.SlowSceneChange(sceneIndex));
+
+            //spelar en ljudeffect
+            AudioManager aManager = FindObjectOfType<AudioManager>();
+            aManager.manager.PlayOneShot(aManager.clip1);
         }
     }
 

@@ -50,6 +50,10 @@ public class TitleScreenManager : MonoBehaviour
 
         //Gör att man inte kan trycka på kuben under titeln
         FindObjectOfType<CubeOnTitle>().clickable = false;
+
+        //spelar en ljudeffect
+        AudioManager aManager = FindObjectOfType<AudioManager>();
+        aManager.manager.PlayOneShot(aManager.clip1);
     }
 
     public void ExitGame()

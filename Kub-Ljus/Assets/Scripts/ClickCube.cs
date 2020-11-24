@@ -135,7 +135,7 @@ public class ClickCube : MonoBehaviour
     {
         if(levelManager.clickAllow)
         {
-            audioManager.manager.PlayOneShot(audioManager.clip1);
+           
 
             //lägger till 1 på variabel som mäter hur många gånger man klickar
             levelManager.amountOfClicks++;
@@ -201,6 +201,8 @@ public class ClickCube : MonoBehaviour
 
             if (checkLight)
             {
+                //spelar ljudeffect
+                audioManager.manager.PlayOneShot(audioManager.clip3);
 
                 //Sätter leveln till completed
                 FindObjectOfType<LevelComplete>().SetLevelComplete();
@@ -214,6 +216,11 @@ public class ClickCube : MonoBehaviour
                 //tar bort refresh knappen
                 Destroy(FindObjectOfType<RefreshButton>().gameObject);
 
+            }
+            else
+            {
+                //spelar ljudeffect
+                audioManager.manager.PlayOneShot(audioManager.clip2);
             }
 
         }
