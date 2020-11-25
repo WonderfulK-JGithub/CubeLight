@@ -259,7 +259,7 @@ public class ClickCube : MonoBehaviour
                 cubeLight.intensity = lightStrength;
 
                 //temporärt pausar coroutinen i 1 frame
-                yield return null;
+                yield return new WaitForFixedUpdate();
             }
         }
         else
@@ -280,7 +280,7 @@ public class ClickCube : MonoBehaviour
                 cubeLight.intensity = lightStrength;
 
                 //temporärt pausar coroutinen i 1 frame
-                yield return null;
+                yield return new WaitForFixedUpdate();
             }
 
            
