@@ -227,7 +227,7 @@ public class ClickCube : MonoBehaviour
 
 
     }
-
+   
     public IEnumerator LightUp()
     { 
         //ger "lightDecrease" motsatt värde, så den slocknar om den lyser och lyser upp om den inte lyser.
@@ -250,7 +250,7 @@ public class ClickCube : MonoBehaviour
             {
                 
                 //lägger till ljusstyrka
-                lightStrength += lightSpeed;
+                lightStrength += lightSpeed * Time.deltaTime * 60;
 
                 //ser till att ljusstyrkan inte råkar gå över 1
                 if (lightStrength > 1) lightStrength = 1;
@@ -271,7 +271,7 @@ public class ClickCube : MonoBehaviour
             while (lightStrength > 0)
             {
                 //tar bort ljusstyrka
-                lightStrength -= lightSpeed;
+                lightStrength -= lightSpeed * Time.deltaTime * 60;
 
                 //ser till att ljusstyrkan inte kan råka gå under 0
                 if (lightStrength < 0) lightStrength = 0;

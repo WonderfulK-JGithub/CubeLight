@@ -291,7 +291,7 @@ PrefabInstance:
     - target: {fileID: 1569272660030742806, guid: 5cacdc7801ab7c04ba4aaeb8966b0939,
         type: 3}
       propertyPath: lightSpeed
-      value: 0.01
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 1569272660030742810, guid: 5cacdc7801ab7c04ba4aaeb8966b0939,
         type: 3}

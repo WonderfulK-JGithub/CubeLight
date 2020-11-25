@@ -112,8 +112,9 @@ MonoBehaviour:
     type: 3}
   partRing: {fileID: 2590020342035076117, guid: ef4e978e6c9bae84eab7a254bd24bcd0,
     type: 3}
+  particles: {fileID: 0}
   lightObject: {fileID: 2363849738452656556, guid: d24db07eb2ddf434baed34fdcf0f0f4e,
     type: 3}
   glowAtStart: 0
-  lightSpeed: 0.01
+  lightSpeed: 0.03
   form: 1
