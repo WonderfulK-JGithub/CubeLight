@@ -141,6 +141,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 461308959030516041}
-  clip1: {fileID: 8300000, guid: abb6a66bf4db318489d05600fcd62792, type: 3}
-  clip2: {fileID: 8300000, guid: ced8248d439887048875bdad7ef9585c, type: 3}
-  clip3: {fileID: 8300000, guid: 1b06b5cb7f260104b856aafd8d1aadba, type: 3}
+  clip1: {fileID: 8300000, guid: 6439c7037df7a824aae9e2075a09d12f, type: 3}
+  clip2: {fileID: 8300000, guid: 4f4dc45dc15004f47a4c12c50141b45c, type: 3}
+  clip3: {fileID: 8300000, guid: 525c3eba68192e540a64eec41d781f16, type: 3}

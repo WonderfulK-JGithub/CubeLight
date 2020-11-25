@@ -7,7 +7,7 @@ public class FadeTransition : MonoBehaviour
 {
     //animator referense
     public Animator animator;
-    
+
     void Awake()
     {
         //Startar animationen för att transitiona in
@@ -35,4 +35,6 @@ public class FadeTransition : MonoBehaviour
     {
         SaveSystem.Delete();
     }
+
+    
 }
